@@ -1,13 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 
+import { exerciseOptions, fetchData } from '../utils/fetchData';
+
 
 const SearchExercises = () => {
   const [search, setSearch] = useState('')
+  const [exercises, setExercises] = useState([])
+  const [bodyParts, setBodyParts] = useState([])
+
+  useEffect(() => {
+    const fetchExerciseData = async () => {
+      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartsList', exerciseOptions);
+
+      setBodyParts(['all', ...bodyPartsData]);
+    }
+    fetchExerciseData();
+  }, [])
 
   const handleSearch = async () => {
     if (search) {
-      // const exerciseData = await fetchData()
+      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+
+      const searchedExercises = exercisesData.filter((exercise) => exercise.name.toLowerCase().includes(search) 
+      || exercise.target.toLowerCase().includes(search) 
+      || exercise.equipment.toLowerCase().includes(search) 
+      || exercise.bodyPart.toLowerCase().includes(search) 
+      );
+      setSearch('');
+      setExercises(searchedExercises);
     }
   }
 
@@ -32,7 +53,7 @@ const SearchExercises = () => {
           }}
           height='80px'
           value={search}
-          onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search Exercises"
           type='text'
         />
@@ -51,7 +72,8 @@ const SearchExercises = () => {
         >
           Search
         </Button>
-
+      </Box>
+      <Box sx={{ position: 'relative', width: '100px', p: '20px'}}>
       </Box>
     </Stack>
   )
