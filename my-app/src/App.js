@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-console.log(process.env.REACT_APP_WEATHER_API_KEY);
 
 const App = () => {
   return (
