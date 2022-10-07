@@ -1,18 +1,3 @@
-// import React from 'react'
-// import { Stack, Typography } from '@mui/material';
-
-// import Icon from '../assets/icons/gym.png';
-
-// const BodyPart = ({ item, setBodyPart, bodyPart }) => {
-//   return (
-//     <Stack>
-//       <img src='Icon'  alt='dumbbell'/>
-//     </Stack>
-//   )
-// }
-
-// export default BodyPart
-
 import React from 'react'
 import { Stack, Typography } from '@mui/material';
 
@@ -33,6 +18,10 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         height: '280px',
         cursor: 'pointer',
         gap: '40px'
+      }}
+      onClick={() => {
+        setBodyPart(item);
+        window.scrollTo({top: 1800, left: 100, behavior: 'smooth'})
       }}
     >
       <img src={Icon} alt="dumbbell" style={{ width: '40px', height: '40px' }} />

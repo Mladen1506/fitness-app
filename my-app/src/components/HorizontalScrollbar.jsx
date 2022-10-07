@@ -11,8 +11,8 @@ const LeftArrow = () => {
   const{ scrollPrev } = useContext(VisibilityContext);
 
   return (
-    <Typography onClick={() => scrollPrev()} className='left-arrow' >
-      <img src={LeftArrowIcon} alt='left-arrow' />
+    <Typography onClick={() => scrollPrev()} className='right-arrow' >
+      <img src={LeftArrowIcon} alt='right-arrow' />
     </Typography>
   );
 };
