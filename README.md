@@ -6,7 +6,7 @@ Fitness App built with React, powered with Rapid Api. Fully responsive app allow
 
 ## Deployment
 App deployed with Netlify.
-You can see deployed app [here][(https://jsm-fitness-app.netlify.app/)]
+You can see deployed app [here](https://jsm-fitness-app.netlify.app/)
 
 
 
